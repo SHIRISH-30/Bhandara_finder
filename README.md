@@ -1,5 +1,5 @@
 
-# Bhandara Map Project
+# Bhandara Finder Project
 
 A fun project made using NodeJs mongoDB EJS and MAPBOX allowing one to discover or create bhandara near his locality . This shows the estimated time and distance to reach there by using mapbox
 
