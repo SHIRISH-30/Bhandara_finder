@@ -1,0 +1,102 @@
+<!-- discover.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Bhandara</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+        .bhandara-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .bhandara-image-section {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 12px 12px 0 0; /* Round only the top corners */
+            background: rgba(207, 203, 203, 0.8); /* Gray color with blur effect */
+            backdrop-filter: blur(50px); /* Adjust the blur intensity as needed */
+        }
+        .bhandara-image {
+            width: 50%; /* Adjust the size of the image */
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .bhandara-content {
+            position: relative;
+            padding: 20px;
+            text-align: left; /* Align description to the left */
+            color: #333;
+        }
+        .bhandara-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .bhandara-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .bhandara-description {
+            color: #555;
+            line-height: 1.4;
+        }
+        .show-details-button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .show-details-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <% bhandara.forEach(bhandaraItem => { %>
+        <div class="bhandara-card">
+            <div class="bhandara-image-section">
+                <img class="bhandara-image" src="/uploads/<%= bhandaraItem.image %>" alt="Bhandara Image">
+            </div>
+            <div class="bhandara-content">
+                <div class="bhandara-info">
+                    <div>
+                        <h3 class="bhandara-title"><%= bhandaraItem.name %></h3>
+                        <p><strong>Time:</strong> <%= bhandaraItem.time %></p>
+                    </div>
+                    <button class="show-details-button" onclick="showDetails('<%= bhandaraItem._id %>')">Show Details</button>
+                </div>
+                <p class="bhandara-description"><%= bhandaraItem.description %></p>
+            </div>
+        </div>
+    <% }) %>
+
+    <script>
+        function showDetails(bhandaraId) {
+            // You can add logic here to show detailed information about the selected Bhandara
+            // For example, redirect to a details page with the BhandaraId
+            window.location.href = '/details/' + bhandaraId;
+        }
+    </script>
+</body>
+</html>

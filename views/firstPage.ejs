@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Bhandara Finder</title>
+    <!-- Include Typed.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        div {
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .text-container {
+            font-size: 1.5em;
+            margin: 20px 0;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .text {
+            display: inline-block;
+            border-right: 1px solid #3498db;
+            animation: typing 2s steps(30) infinite;
+        }
+
+        @keyframes typing {
+            from, to {
+                border-right: 1px solid transparent;
+            }
+            50% {
+                border-right: 1px solid #3498db;
+            }
+        }
+
+        p {
+            color: #555;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <h1>Welcome to Bhandara Finder</h1>
+
+    <div class="text-container">
+        <span class="text"></span>
+    </div>
+    
+    <!-- Get Started Button -->
+    <button onclick="redirectToLogin()">Get Started</button>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var typed = new Typed(".text", {
+            strings: ['Find the Bhandara Nearest to You'],
+            typeSpeed: 100,
+            backSpeed: 100,
+            backDelay: 1000,
+            loop: true,
+        });
+
+        // Add cursor-following effect
+        var textContainer = document.querySelector('.text-container');
+        textContainer.addEventListener('mousemove', function (event) {
+            var mouseX = event.clientX - textContainer.getBoundingClientRect().left;
+            var percentage = (mouseX / textContainer.offsetWidth) * 100;
+            textContainer.style.setProperty('--cursor-position', percentage + '%');
+        });
+    });
+
+    // Function to redirect to login-otp page
+    function redirectToLogin() {
+        // Assuming login-otp page is at /login-otp
+        window.location.href = '/login-otp';
+    }
+</script>
+
+</body>
+</html>

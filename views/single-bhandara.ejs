@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> <%= bhandaraData.name %></title>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js'></script>
+  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css' type='text/css'/>
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #map {
+      height: 400px;
+      width: 80%;
+      margin-top: 20px;
+    }
+
+    .info-container {
+      background-color: #f8f8f8;
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 8px;
+      width: 80%;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      margin: 10px 0;
+      color: #555;
+    }
+
+    .info-container a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .info-container a:hover {
+      text-decoration: underline;
+    }
+
+    /* Add styles for zoom buttons */
+    .mapboxgl-ctrl-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    .mapboxgl-ctrl-group button {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 5px;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .mapboxgl-ctrl-group button:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Style for Navigation Control */
+    .mapboxgl-ctrl-top-right {
+      top: 10px;
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1> <%= bhandaraData.name %></h1>
+  <div id='map'></div>
+  <div class='info-container'>
+    <p><strong>Name:</strong> <%= bhandaraData.name %></p>
+    <p><strong>Date:</strong> <%= bhandaraData.date %></p>
+    <p><strong>Link:</strong> <a href="<%= bhandaraData.googleMapLink %>" target="_blank">Visit on Google Maps</a></p>
+    <p><strong>Description:</strong> <%= bhandaraData.description %></p>
+  </div>
+
+  <script>
+    mapboxgl.accessToken = 'WITH YOUR TOKEN'; // Replace with your Mapbox access token
+
+    const coordinates1 = <%= JSON.stringify(coordinates1) %>;
+    const coordinates2 = <%= JSON.stringify(coordinates2) %>;
+
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: coordinates1,
+      zoom: 5
+    });
+
+    const marker1 = new mapboxgl.Marker({ draggable: false })
+      .setLngLat(coordinates1)
+      .addTo(map);
+
+    const marker2 = new mapboxgl.Marker({ draggable: false })
+      .setLngLat(coordinates2)
+      .addTo(map);
+
+    // Add navigation control
+    const directions = new MapboxDirections({
+      accessToken: mapboxgl.accessToken,
+      unit: 'metric',
+      profile: 'mapbox/driving',
+      controls: { instructions: false }
+    });
+
+    map.addControl(directions, 'top-right');
+
+    // Set the origin and destination for the route
+    directions.setOrigin(coordinates1);
+    directions.setDestination(coordinates2);
+
+    // Add zoom buttons
+    const nav = new mapboxgl.NavigationControl();
+    map.addControl(nav, 'top-left');
+
+    // Listen for the route event to get the route details
+    directions.on('route', function(e) {
+      const route = e.route[0];
+      const distance = route.distance / 1000; // Convert meters to kilometers
+      const duration = route.duration / 60; // Convert seconds to minutes
+
+      const popupContent = `<strong>Estimated Time and Distance</strong><br>Distance: ${distance.toFixed(2)} km<br>Duration: ${duration.toFixed(2)} min`;
+
+      // Create a popup
+      const popup = new mapboxgl.Popup({ offset: 25 })
+        .setLngLat(coordinates1)
+        .setHTML(popupContent)
+        .addTo(map);
+    });
+  </script>
+</body>
+</html>

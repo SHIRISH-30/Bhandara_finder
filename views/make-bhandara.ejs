@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Bhandara of Your Locality</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form action="/make" method="POST" enctype="multipart/form-data">
+        <h1>Add Bhandara of Your Locality</h1>
+        <div>
+            <label for="name">Name of the Bhandara:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="image">Image of the Bhandara:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+        </div>
+        <div>
+            <label for="date">Date of the Event:</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+        <div>
+            <label for="time">Time of the Event:</label>
+            <select id="time" name="time" required>
+                <option value="Morning">Morning</option>
+                <option value="Afternoon">Afternoon</option>
+                <option value="Evening">Evening</option>
+            </select>
+        </div>
+        <div>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="locationName" required>
+        </div>
+        <div>
+            <label for="mapLink">Google Map Link:</label>
+            <input type="url" id="mapLink" name="googleMapLink">
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</body>
+</html>

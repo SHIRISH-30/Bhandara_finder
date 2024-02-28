@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhandara Finder</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+        }
+       
+        nav {
+            background-color: #000;
+            color: white;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a, nav span {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav span:hover {
+            color: #3498db;
+        }
+
+        nav div {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav div span {
+            margin-left: auto;
+        }
+
+        header {
+            
+            background: #333 url('header-bg.jpg') no-repeat center center/cover;
+            color: white;
+            padding-top: 100px;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            padding: 50px 0;
+        }
+
+        .section:nth-child(even) {
+            background: #f4f4f4;
+        }
+
+        .section .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 15px;
+        }
+
+        .gallery img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .testimonial {
+            background: #333;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .cta {
+            background: #7c7e80;
+            color: black;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .cta h2 {
+            margin-top: 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #626060;
+            color: white;
+            padding: 10px 20px;
+            margin: 20px 0;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #555;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="#">Bhandara Finder</a>
+            <div>
+                <a href="/discover">Discover</a>
+                <a href="/make">Create</a>
+            </div>
+            <span>Welcome <%= user.name %></span>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <h1>Explore and Create Bhandara Events</h1>
+            <p>Join the community dedicated to organizing and discovering Bhandara events around you.</p>
+            <a href="/discover" class="btn">Discover More</a>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">What is Bhandara?</div>
+            <p>A free meal served to devotees in Hindu Dharma temples. It is also served to those waiting in short distance to the temple. Bhandara is considered the "Prasad" of the temple's presiding deity.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">Testimonials</div>
+            <div class="testimonial">
+                "Participating in a Bhandara event was a heartwarming experience. It's not just about the food but the sense of community and unity that it fosters."
+            </div>
+            <div class="testimonial">
+                "Organizing a Bhandara with the help of Bhandara Finder was seamless. It allowed us to reach more people and make a bigger impact."
+            </div>
+        </div>
+    </section>
+
+    <section class="section cta">
+        <div class="container">
+            <h2>Ready to Join a Bhandara Event?</h2>
+            <p>Explore upcoming events or create your own. Let's bring people together and make a difference.</p>
+            <a href="/discover" class="btn">Explore Events</a>
+            <a href="/make" class="btn">Host Your Event</a>
+        </div>
+    </section>
+
+</body>
+</html>
