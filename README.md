@@ -1,7 +1,7 @@
 
 # Bhandara Map Project
 
-This project aims to create an interactive map displaying information about various Bhandaras, including their names, dates, links to Google Maps, and descriptions.
+A fun project made using NodeJs mongoDB EJS and MAPBOX allowing one to discover or create bhandara near his locality . This shows the estimated time and distance to reach there by using mapbox
 
 ## Description
 
