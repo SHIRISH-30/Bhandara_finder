@@ -1,4 +1,4 @@
-```markdown
+
 # Bhandara Map Project
 
 This project aims to create an interactive map displaying information about various Bhandaras, including their names, dates, links to Google Maps, and descriptions.
@@ -30,7 +30,7 @@ Contributions to the project are welcome. If you'd like to contribute, please fo
 4. Push to the branch: `git push origin feature-name`
 5. Submit a pull request
 
-```
+
 
 Feel free to adjust the content to better fit your project or add any additional details you think are necessary.
 
