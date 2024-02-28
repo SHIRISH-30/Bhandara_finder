@@ -225,7 +225,7 @@ app.get("/details/:id",async(req,res)=>{
   
 })
 async function getCoordinates(location) {
-  const mapboxAccessToken = 'pk.eyJ1Ijoic2hpcmlzaDMwIiwiYSI6ImNsdDM5OXZvdzF0MGgybG81emthaWM5OXgifQ.SEbKaymIBb2DYuS85G1VTg'; // Replace with your Mapbox access token
+   // Replace with your Mapbox access token
   const geocodingApiUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(location)}.json?access_token=${mapboxAccessToken}`;
 
   const response = await axios.get(geocodingApiUrl);
